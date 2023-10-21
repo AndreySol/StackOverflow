@@ -53,16 +53,14 @@ android {
 
 dependencies {
 
-    implementation("com.google.android.material:material:1.10.0")
+    implementation(project(":questions"))
+
+    // Material 3
+    implementation("androidx.compose.material3:material3:1.1.2")
+
     // Navigation
     val nav_version = "2.7.4"
     implementation("androidx.navigation:navigation-compose:$nav_version")
-
-    // Retrofit
-    val retrofit_version = "2.9.0"
-    implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
-    implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
-    implementation("com.squareup.okhttp3:okhttp:4.11.0")
 
     // Hilt
     val hilt_version = "2.48.1"
@@ -70,8 +68,6 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:${hilt_version}")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
-    // Coil
-    implementation("io.coil-kt:coil-compose:2.4.0")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
