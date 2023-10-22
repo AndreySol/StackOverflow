@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">questions</string>
+    <string name="error_unknown_host">Unknown Host</string>
+    <string name="error_unknown_error">Unknown Error</string>
+</resources>
