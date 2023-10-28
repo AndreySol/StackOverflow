@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">questions</string>
-    <string name="error_unknown_host">Unknown Host</string>
+    <string name="error_unknown_host">Host is not reachable</string>
     <string name="error_unknown_error">Unknown Error</string>
+    <string name="error_parameter_error">Incorrect parameter</string>
 </resources>

@@ -18,12 +18,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidView
-import androidx.core.text.HtmlCompat
-import com.example.stackoverflow.questions.ui.viewmodels.AnswersScreenState
 import com.example.stackoverflow.questions.ui.composes.ShowAuthorImage
-import com.google.android.material.textview.MaterialTextView
+import com.example.stackoverflow.questions.ui.composes.ShowHtmlAnswerBody
+import com.example.stackoverflow.questions.ui.viewmodels.AnswersScreenState
 
 @Composable
 fun AnswersScreen(state: AnswersScreenState) {
@@ -42,14 +42,14 @@ fun AnswersScreen(state: AnswersScreenState) {
                     .padding(16.dp)
             ) {
                 item {
-                    Text("Author: " + state.question.author)
+                    Text("Author: " + state.questionWithAnswers.question.author)
                     ShowAuthorImage(
                         modifier = Modifier.size(100.dp),
-                        imageUrl = state.question.authorImage
+                        imageUrl = state.questionWithAnswers.question.authorImage
                     )
-                    Text("Title: ${state.question.title}")
-                    if (state.question.body != null) {
-                        ShowHtmlAnswerBody(body = state.question.body)
+                    Text("Title: ${state.questionWithAnswers.question.title}")
+                    if (state.questionWithAnswers.question.body != null) {
+                        ShowHtmlAnswerBody(body = state.questionWithAnswers.question.body)
                     }
                     Divider(
                         modifier = Modifier
@@ -57,7 +57,7 @@ fun AnswersScreen(state: AnswersScreenState) {
                             .width(1.dp)
                     )
                 }
-                items(state.answers) { question ->
+                items(state.questionWithAnswers.answers) { question ->
                     Column(
                         modifier = Modifier.clickable {
                             //onItemClicked(question.id)
@@ -76,15 +76,17 @@ fun AnswersScreen(state: AnswersScreenState) {
                 }
             }
         }
+
+        is AnswersScreenState.Error -> {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Error: ${state.errorCode.toMessage()}",
+                    style = TextStyle(color = Color.Red)
+                )
+            }
+        }
     }
-}
-
-@Composable
-fun ShowHtmlAnswerBody(body: String) {
-    val spannedBody = HtmlCompat.fromHtml(body, 0)
-
-    AndroidView(
-        factory = { MaterialTextView(it) },
-        update = { it.text = spannedBody }
-    )
 }

@@ -21,17 +21,19 @@ class QuestionsRepositoryImpl @Inject constructor(
         } ?: emptyList()
     }
 
-    override suspend fun requestQuestionById(id: Int): Question {
+    override suspend fun requestQuestionById(id: Int): Question? {
         val questions = remoteDataSource.requestQuestionById(id)
-        val question = questions?.items?.first()!!
+        val question = questions?.items?.first()
 
-        return Question(
-            id = question.question_id,
-            title = question.title,
-            author = question.owner.display_name,
-            authorImage = question.owner.profile_image,
-            body = question.body
-        )
+        return question?.let {
+            Question(
+                id = it.question_id,
+                title = it.title,
+                author = it.owner.display_name,
+                authorImage = it.owner.profile_image,
+                body = it.body
+            )
+        }
     }
 
     override suspend fun requestAnswersByQuestionId(questionId: Int): List<Answer> {

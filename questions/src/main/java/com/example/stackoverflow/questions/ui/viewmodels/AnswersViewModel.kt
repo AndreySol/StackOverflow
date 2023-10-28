@@ -3,8 +3,8 @@ package com.example.stackoverflow.questions.ui.viewmodels
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.stackoverflow.questions.domain.usecases.RequestAnswersByQuestionIdUseCase
-import com.example.stackoverflow.questions.domain.usecases.RequestQuestionByIdUseCase
+import com.example.stackoverflow.common.Result
+import com.example.stackoverflow.questions.domain.usecases.RequestQuestionWithAnswersByIdUseCase
 import com.example.stackoverflow.questions.navigation.QuestionIdArgs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,8 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AnswersViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
-    private val requestAnswersByQuestionId: RequestAnswersByQuestionIdUseCase,
-    private val requestQuestionById: RequestQuestionByIdUseCase
+    private val questionWithAnswersByIdUseCase: RequestQuestionWithAnswersByIdUseCase
 ) : ViewModel() {
     private val questionIdArgs = QuestionIdArgs(savedStateHandle)
 
@@ -26,13 +25,18 @@ class AnswersViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val answers = requestAnswersByQuestionId(questionIdArgs.questionId)
-            val question = requestQuestionById(questionIdArgs.questionId)
+            val result = questionWithAnswersByIdUseCase(questionIdArgs.questionId)
             _flow.update {
-                AnswersScreenState.Loaded(
-                    question = question,
-                    answers = answers
-                )
+                when (result) {
+                    is Result.Success -> {
+                        AnswersScreenState.Loaded(result.data)
+                    }
+
+                    is Result.Failure -> {
+                        AnswersScreenState.Error(errorCode = result.errorCode)
+                    }
+                }
+
             }
         }
     }

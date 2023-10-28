@@ -1,4 +1,6 @@
 package com.example.stackoverflow.questions.domain.entities
 
-class QuestionWithAnswers {
-}
+data class QuestionWithAnswers(
+    val question: Question,
+    val answers: List<Answer>
+)

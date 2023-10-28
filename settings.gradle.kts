@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "StackOverflow"
 include(":app")
 include(":questions")
+include(":common")
