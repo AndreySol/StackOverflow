@@ -1,4 +1,4 @@
-package com.example.stackoverflow.questions.data
+package com.example.stackoverflow.api
 
 import com.example.stackoverflow.questions.domain.QuestionsRepository
 import com.example.stackoverflow.questions.domain.entities.Answer

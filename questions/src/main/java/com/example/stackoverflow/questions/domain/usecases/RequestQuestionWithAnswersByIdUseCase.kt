@@ -36,7 +36,5 @@ class RequestQuestionWithAnswersByIdUseCase @Inject constructor(
             AppLogger.error(e)
             return Result.Failure(errorCode = ErrorCode.UNKNOWN_ERROR)
         }
-
-
     }
 }

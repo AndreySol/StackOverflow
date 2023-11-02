@@ -1,4 +1,4 @@
-package com.example.stackoverflow.questions.data.api
+package com.example.stackoverflow.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

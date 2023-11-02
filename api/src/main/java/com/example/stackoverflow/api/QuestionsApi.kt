@@ -1,7 +1,7 @@
-package com.example.stackoverflow.questions.data.api
+package com.example.stackoverflow.api
 
-import com.example.stackoverflow.questions.data.dto.AnswersDto
-import com.example.stackoverflow.questions.data.dto.QuestionsDto
+import com.example.stackoverflow.api.dto.AnswersDto
+import com.example.stackoverflow.api.dto.QuestionsDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -12,7 +12,7 @@ interface QuestionsApi {
     suspend fun requestQuestions(): Response<QuestionsDto>
 
     @GET("/2.3/questions/{id}?&site=stackoverflow&filter=withbody")
-    suspend fun requestQuestionById(@Path("id")id: Int): Response<QuestionsDto>
+    suspend fun requestQuestionById(@Path("id") id: Int): Response<QuestionsDto>
 
     @GET("/2.3/questions/{questionId}/answers?&site=stackoverflow&filter=withbody")
     suspend fun requestAnswersByQuestionId(@Path("questionId") questionId: Int): Response<AnswersDto>

@@ -1,6 +1,6 @@
-package com.example.stackoverflow.questions.data.dto
+package com.example.stackoverflow.api.dto
 
-import com.example.stackoverflow.questions.data.dto.QuestionDto
+import com.example.stackoverflow.api.dto.QuestionDto
 
 data class QuestionsDto(
     val has_more: Boolean,

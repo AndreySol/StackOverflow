@@ -1,19 +1,18 @@
-package com.example.stackoverflow.questions.di
+package com.example.stackoverflow.api.di
 
-import com.example.stackoverflow.questions.data.QuestionsRepositoryImpl
-import com.example.stackoverflow.questions.data.RemoteDataSource
-import com.example.stackoverflow.questions.data.api.QuestionsApi
-import com.example.stackoverflow.questions.data.api.RetrofitServer
+import com.example.stackoverflow.api.QuestionsApi
+import com.example.stackoverflow.api.QuestionsRepositoryImpl
+import com.example.stackoverflow.api.RemoteDataSource
+import com.example.stackoverflow.api.RetrofitServer
 import com.example.stackoverflow.questions.domain.QuestionsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object QuestionsModule {
+object ApiModule {
 
     @Provides
     fun provideQuestionsRepository(remoteDataSource: RemoteDataSource): QuestionsRepository {

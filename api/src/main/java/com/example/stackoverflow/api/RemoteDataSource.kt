@@ -1,9 +1,7 @@
-package com.example.stackoverflow.questions.data
+package com.example.stackoverflow.api
 
+import com.example.stackoverflow.api.dto.QuestionsDto
 import com.example.stackoverflow.common.exceptions.ApiException
-import com.example.stackoverflow.questions.data.api.QuestionsApi
-import com.example.stackoverflow.questions.data.dto.AnswersDto
-import com.example.stackoverflow.questions.data.dto.QuestionsDto
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(
@@ -24,7 +22,7 @@ class RemoteDataSource @Inject constructor(
         }
     }
 
-    suspend fun requestQuestionById(id: Int): QuestionsDto? {
+    suspend fun requestQuestionById(id: Int): com.example.stackoverflow.api.dto.QuestionsDto? {
         val response = api.requestQuestionById(id)
 
         if (response.isSuccessful) {
@@ -35,7 +33,7 @@ class RemoteDataSource @Inject constructor(
         }
     }
 
-    suspend fun requestAnswersByQuestionId(questionId: Int): AnswersDto? {
+    suspend fun requestAnswersByQuestionId(questionId: Int): com.example.stackoverflow.api.dto.AnswersDto? {
         val response = api.requestAnswersByQuestionId(questionId)
 
         if (response.isSuccessful) {

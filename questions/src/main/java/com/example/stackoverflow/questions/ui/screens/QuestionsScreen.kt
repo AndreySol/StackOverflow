@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.example.stackoverflow.questions.ui.composes.ShowAuthorImage
@@ -34,44 +35,63 @@ fun QuestionsScreen(
     ) {
         when (state) {
             is QuestionsScreenState.Loaded -> {
-                LazyColumn(
-                    modifier = Modifier
-                        .padding(16.dp)
-                ) {
-                    items(state.questions) { question ->
-                        Column(
-                            modifier = Modifier.clickable {
-                                onItemClicked(question.id)
-                            }
-                        ) {
-                            Text("Title: ${question.title}")
-                            Text("Author: ${question.author}")
-                            ShowAuthorImage(
-                                modifier = Modifier
-                                    .height(100.dp)
-                                    .width(100.dp),
-                                imageUrl = question.authorImage
-                            )
-                            Spacer(modifier = Modifier.height(8.dp))
-                            Divider(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .width(1.dp)
-                                    .padding(bottom = 8.dp)
-                            )
-                        }
-                    }
-                }
+                ShowContent(state, onItemClicked)
             }
 
             QuestionsScreenState.Loading -> {
-                CircularProgressIndicator()
+                ShowLoading()
             }
 
             is QuestionsScreenState.Error -> {
-                Text(
-                    text = "Error msg: ${state.errorCode.toMessage()}",
-                    style = TextStyle(color = Color.Red)
+                ShowError(state)
+            }
+        }
+    }
+}
+
+@Composable
+private fun ShowError(state: QuestionsScreenState.Error) {
+    val errorCode = state.errorCode
+    Text(
+        text = "Error msg: ${state.errorCode.toMessage(LocalContext.current)}",
+        style = TextStyle(color = Color.Red)
+    )
+}
+
+@Composable
+private fun ShowLoading() {
+    CircularProgressIndicator()
+}
+
+@Composable
+private fun ShowContent(
+    state: QuestionsScreenState.Loaded,
+    onItemClicked: (Int) -> Unit
+) {
+    LazyColumn(
+        modifier = Modifier
+            .padding(16.dp)
+    ) {
+        items(state.questions) { question ->
+            Column(
+                modifier = Modifier.clickable {
+                    onItemClicked(question.id)
+                }
+            ) {
+                Text("Title: ${question.title}")
+                Text("Author: ${question.author}")
+                ShowAuthorImage(
+                    modifier = Modifier
+                        .height(100.dp)
+                        .width(100.dp),
+                    imageUrl = question.authorImage
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Divider(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .width(1.dp)
+                        .padding(bottom = 8.dp)
                 )
             }
         }

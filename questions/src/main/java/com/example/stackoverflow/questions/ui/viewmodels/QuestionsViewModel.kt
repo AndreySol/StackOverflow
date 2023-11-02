@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class QuestionsViewModel @Inject constructor(
-    val requestQuestions: RequestQuestionsUseCase
+    val requestQuestions: RequestQuestionsUseCase,
 ) : ViewModel() {
     private val _flow = MutableStateFlow<QuestionsScreenState>(
         QuestionsScreenState.Loading

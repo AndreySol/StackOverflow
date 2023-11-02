@@ -1,6 +1,6 @@
-package com.example.stackoverflow.questions.data.dto
+package com.example.stackoverflow.api.dto
 
-import com.example.stackoverflow.questions.data.dto.OwnerDto
+import com.example.stackoverflow.api.dto.OwnerDto
 
 data class QuestionDto(
     val accepted_answer_id: Int,

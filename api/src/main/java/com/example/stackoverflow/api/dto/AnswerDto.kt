@@ -1,4 +1,4 @@
-package com.example.stackoverflow.questions.data.dto
+package com.example.stackoverflow.api.dto
 
 data class AnswerDto(
     val answer_id: Int,

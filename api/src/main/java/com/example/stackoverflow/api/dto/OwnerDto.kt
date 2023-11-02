@@ -1,4 +1,4 @@
-package com.example.stackoverflow.questions.data.dto
+package com.example.stackoverflow.api.dto
 
 data class OwnerDto(
     val accept_rate: Int,

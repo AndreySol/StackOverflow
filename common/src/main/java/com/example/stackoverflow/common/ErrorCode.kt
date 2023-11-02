@@ -1,26 +1,24 @@
 package com.example.stackoverflow.common
 
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
+import android.content.Context
 
 enum class ErrorCode {
     UNKNOWN_ERROR,
     UNKNOWN_HOST,
     PARAMETER_ERROR;
 
-    @Composable
-    fun toMessage(): String {
+    fun toMessage(ctx: Context): String {
         return when (this) {
             UNKNOWN_HOST -> {
-                stringResource(R.string.error_unknown_host)
+                ctx.getString(R.string.error_unknown_host)
             }
 
             UNKNOWN_ERROR -> {
-                stringResource(R.string.error_unknown_error)
+                ctx.getString(R.string.error_unknown_error)
             }
 
             PARAMETER_ERROR -> {
-                stringResource(R.string.error_parameter_error)
+                ctx.getString(R.string.error_parameter_error)
             }
         }
     }

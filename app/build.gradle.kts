@@ -60,6 +60,9 @@ android {
 dependencies {
 
     implementation(project(":questions"))
+    implementation(project(":common"))
+    implementation(project(":api"))
+    implementation(project(":database"))
 
     compose()
     hilt()
