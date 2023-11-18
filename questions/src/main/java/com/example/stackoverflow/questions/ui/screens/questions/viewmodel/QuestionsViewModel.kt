@@ -2,6 +2,7 @@ package com.example.stackoverflow.questions.ui.screens.questions.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.stackoverflow.common.ErrorCode
 import com.example.stackoverflow.common.Result
 import com.example.stackoverflow.questions.domain.entities.Question
 import com.example.stackoverflow.questions.domain.usecases.RequestQuestionsUseCase
@@ -21,32 +22,31 @@ class QuestionsViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val result = requestQuestions()
-            _flow.update { state ->
-                when (result) {
-                    is Result.Success -> showData(state, result)
-                    is Result.Failure -> showErrorMsg(state, result)
-                }
+            when (val result = requestQuestions()) {
+                is Result.Success -> emitData(result.data)
+                is Result.Failure -> emitErrorMsg(result.errorCode)
             }
         }
     }
 
-    private fun showErrorMsg(
-        state: QuestionsScreenState,
-        result: Result.Failure
-    ) = state.copy(
-        errorCode = result.errorCode,
-        loading = false
-    )
+    private fun emitData(
+        data: List<Question>
+    ) = _flow.update { state ->
+        state.copy(
+            questions = data,
+            loading = false,
+            errorCode = null
+        )
+    }
 
-    private fun showData(
-        state: QuestionsScreenState,
-        result: Result.Success<List<Question>>
-    ) = state.copy(
-        questions = result.data,
-        loading = false,
-        errorCode = null
-    )
+    private fun emitErrorMsg(
+        errorCode: ErrorCode
+    ) = _flow.update { state ->
+        state.copy(
+            errorCode = errorCode,
+            loading = false
+        )
+    }
 
     fun onEvent(event: QuestionEvent) {
         when (event) {
