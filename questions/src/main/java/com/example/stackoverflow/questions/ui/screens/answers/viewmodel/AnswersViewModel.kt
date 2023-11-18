@@ -1,4 +1,4 @@
-package com.example.stackoverflow.questions.ui.viewmodels
+package com.example.stackoverflow.questions.ui.screens.answers.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -15,25 +15,32 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AnswersViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle,
+    savedStateHandle: SavedStateHandle,
     private val questionWithAnswersByIdUseCase: RequestQuestionWithAnswersByIdUseCase
 ) : ViewModel() {
     private val questionIdArgs = QuestionIdArgs(savedStateHandle)
 
-    private val _flow = MutableStateFlow<AnswersScreenState>(AnswersScreenState.Loading)
+    private val _flow = MutableStateFlow(AnswersScreenState())
     val flow: StateFlow<AnswersScreenState> = _flow
 
     init {
         viewModelScope.launch {
             val result = questionWithAnswersByIdUseCase(questionIdArgs.questionId)
-            _flow.update {
+            _flow.update { state ->
                 when (result) {
                     is Result.Success -> {
-                        AnswersScreenState.Loaded(result.data)
+                        state.copy(
+                            loading = false,
+                            questionWithAnswers = result.data,
+                            errorCode = null
+                        )
                     }
 
                     is Result.Failure -> {
-                        AnswersScreenState.Error(errorCode = result.errorCode)
+                        state.copy(
+                            loading = false,
+                            errorCode = result.errorCode
+                        )
                     }
                 }
 

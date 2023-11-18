@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">questions</string>
+    <string name="empty_questions_list">Empty questions list</string>
+    <string name="empty_answers_list">Empty answers list</string>
 </resources>

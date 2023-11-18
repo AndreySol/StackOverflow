@@ -9,8 +9,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.stackoverflow.questions.ui.screens.AnswersScreen
-import com.example.stackoverflow.questions.ui.viewmodels.AnswersViewModel
+import com.example.stackoverflow.questions.ui.screens.answers.AnswersScreen
+import com.example.stackoverflow.questions.ui.screens.answers.viewmodel.AnswersViewModel
 
 internal const val questionIdArg = "question_id"
 
