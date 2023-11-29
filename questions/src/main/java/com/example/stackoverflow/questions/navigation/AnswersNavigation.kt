@@ -1,9 +1,9 @@
 package com.example.stackoverflow.questions.navigation
 
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
@@ -28,7 +28,7 @@ fun NavGraphBuilder.answersScreen() {
         )
     ) {
         val viewModel: AnswersViewModel = hiltViewModel()
-        val state by viewModel.flow.collectAsState()
+        val state by viewModel.flow.collectAsStateWithLifecycle()
         AnswersScreen(state = state)
     }
 }

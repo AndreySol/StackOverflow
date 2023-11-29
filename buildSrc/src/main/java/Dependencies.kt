@@ -16,6 +16,10 @@ object Dependencies {
     const val composeBom = "androidx.compose:compose-bom:2023.10.01"
     const val composeNavigation =
         "androidx.navigation:navigation-compose:${Versions.composNavigation}"
+    const val composeUiToolingPreview =
+        "androidx.compose.ui:ui-tooling-preview-android:${Versions.compose}"
+    const val composeLifeCycleRuntime =
+        "androidx.lifecycle:lifecycle-runtime-compose:${Versions.compose}"
 
     // Coil
     const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
@@ -36,6 +40,8 @@ fun DependencyHandler.retrofit() {
 fun DependencyHandler.compose() {
     implementation(Dependencies.composeMaterial3)
     implementation(Dependencies.composeNavigation)
+    implementation(Dependencies.composeUiToolingPreview)
+    implementation(Dependencies.composeLifeCycleRuntime)
     implementation(platform(Dependencies.composeBom))
 }
 

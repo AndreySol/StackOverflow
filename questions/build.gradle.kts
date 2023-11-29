@@ -48,7 +48,6 @@ dependencies {
     hilt()
     compose()
     coil()
-
     // Material
     implementation("com.google.android.material:material:1.10.0")
 
