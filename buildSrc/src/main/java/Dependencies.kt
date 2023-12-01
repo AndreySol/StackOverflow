@@ -23,6 +23,16 @@ object Dependencies {
 
     // Coil
     const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
+
+    // Room
+    const val room = "androidx.room:room-ktx:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+
+    // Test
+    const val testJUnit = "junit:junit:${Versions.jUnit}"
+    const val androidTestJUnit = "androidx.test.ext:junit:${Versions.androidJUnit}"
+    const val androidTestEspresso =
+        "androidx.test.espresso:espresso-core:${Versions.androidEspresso}"
 }
 
 fun DependencyHandler.hilt() {
@@ -47,4 +57,15 @@ fun DependencyHandler.compose() {
 
 fun DependencyHandler.coil() {
     implementation(Dependencies.coil)
+}
+
+fun DependencyHandler.room() {
+    implementation(Dependencies.room)
+    kapt(Dependencies.roomCompiler)
+}
+
+fun DependencyHandler.test() {
+    test(Dependencies.testJUnit)
+    androidTest(Dependencies.androidTestJUnit)
+    androidTest(Dependencies.androidTestEspresso)
 }

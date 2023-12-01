@@ -17,5 +17,7 @@ rootProject.name = "StackOverflow"
 include(":app")
 include(":questions")
 include(":common")
-include(":api")
+include(":network")
 include(":database")
+include(":data")
+include(":data")

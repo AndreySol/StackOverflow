@@ -1,15 +1,16 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
-    namespace = "com.example.stackoverflow.common"
-    compileSdk = 34
+    namespace = "com.example.stackoverflow.api"
+    compileSdk = 33
 
     defaultConfig {
         minSdk = 24
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -34,8 +35,11 @@ android {
 
 dependencies {
 
-    test()
+    implementation(project(":common"))
+    implementation(project(":questions"))
 
-    // Composable
-    //implementation("androidx.activity:activity-compose:1.8.0")
+    retrofit()
+    hilt()
+
+    test()
 }

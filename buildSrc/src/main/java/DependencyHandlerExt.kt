@@ -10,11 +10,11 @@ fun DependencyHandler.implementation(dependency: Dependency) {
 }
 
 fun DependencyHandler.test(dependency: String) {
-    add("test", dependency)
+    add("testImplementation", dependency)
 }
 
 fun DependencyHandler.androidTest(dependency: String) {
-    add("androidTest", dependency)
+    add("androidTestImplementation", dependency)
 }
 
 fun DependencyHandler.kapt(dependency: String) {
