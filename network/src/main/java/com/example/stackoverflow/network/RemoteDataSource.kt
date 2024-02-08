@@ -6,10 +6,11 @@ import com.example.stackoverflow.network.dto.AnswersDto
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(
-    private val api: QuestionsApi
+    private val questionApi: QuestionsApi,
+    private val answersApi: AnswersApi
 ) {
     suspend fun requestQuestions(): QuestionsDto? {
-        val response = api.requestQuestions()
+        val response = questionApi.requestQuestions()
 
         if (response.isSuccessful) {
             return response.body()
@@ -24,7 +25,7 @@ class RemoteDataSource @Inject constructor(
     }
 
     suspend fun requestQuestionById(id: Int): QuestionsDto? {
-        val response = api.requestQuestionById(id)
+        val response = questionApi.requestQuestionById(id)
 
         if (response.isSuccessful) {
             return response.body()
@@ -35,7 +36,7 @@ class RemoteDataSource @Inject constructor(
     }
 
     suspend fun requestAnswersByQuestionId(questionId: Int): AnswersDto? {
-        val response = api.requestAnswersByQuestionId(questionId)
+        val response = answersApi.requestAnswersByQuestionId(questionId)
 
         if (response.isSuccessful) {
             return response.body()

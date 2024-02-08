@@ -13,9 +13,6 @@ interface QuestionsApi {
 
     @GET("/2.3/questions/{id}?&site=stackoverflow&filter=withbody")
     suspend fun requestQuestionById(@Path("id") id: Int): Response<QuestionsDto>
-
-    @GET("/2.3/questions/{questionId}/answers?&site=stackoverflow&filter=withbody")
-    suspend fun requestAnswersByQuestionId(@Path("questionId") questionId: Int): Response<AnswersDto>
 }
 
 

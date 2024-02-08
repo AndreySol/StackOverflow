@@ -1,5 +1,6 @@
 package com.example.stackoverflow.network.di
 
+import com.example.stackoverflow.network.AnswersApi
 import com.example.stackoverflow.network.QuestionsApi
 import com.example.stackoverflow.network.RetrofitServer
 import dagger.Module
@@ -12,8 +13,13 @@ import dagger.hilt.components.SingletonComponent
 object NetworkModule {
 
     @Provides
-    fun provideApi(): QuestionsApi {
-        return RetrofitServer.api
+    fun provideQuestionsApi(): QuestionsApi {
+        return RetrofitServer.questionsApi
+    }
+
+    @Provides
+    fun provideAnswersApi(): AnswersApi {
+        return RetrofitServer.answersApi
     }
 
 }
