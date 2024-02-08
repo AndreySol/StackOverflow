@@ -15,9 +15,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "StackOverflow"
 include(":app")
-include(":questions")
 include(":common")
 include(":network")
 include(":database")
 include(":data")
-include(":data")
+include(":feature:questions")
+include(":feature:answers")

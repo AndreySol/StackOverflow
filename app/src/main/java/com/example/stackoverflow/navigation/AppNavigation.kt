@@ -6,7 +6,7 @@ import com.example.stackoverflow.ui.screens.MainScreen
 
 const val mainRoute = "main_route"
 
-fun NavGraphBuilder.navigateToMainScreen(onButtonClicked: () -> Unit) {
+fun NavGraphBuilder.mainScreen(onButtonClicked: () -> Unit) {
     composable(route = mainRoute) {
         MainScreen {
             onButtonClicked()

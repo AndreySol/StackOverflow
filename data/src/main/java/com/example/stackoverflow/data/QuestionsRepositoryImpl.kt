@@ -7,7 +7,6 @@ import com.example.stackoverflow.data.mapper.toEntity
 import com.example.stackoverflow.data.mapper.toQuestion
 import com.example.stackoverflow.database.LocalDataSource
 import com.example.stackoverflow.questions.domain.QuestionsRepository
-import com.example.stackoverflow.questions.domain.entities.Answer
 import com.example.stackoverflow.questions.domain.entities.Question
 import java.net.UnknownHostException
 import javax.inject.Inject
@@ -74,30 +73,6 @@ class QuestionsRepositoryImpl @Inject constructor(
                     body = it.body
                 )
             }
-            Result.Success(data)
-        } catch (e: UnknownHostException) {
-            AppLogger.error(e)
-            Result.Failure(errorCode = ErrorCode.UNKNOWN_HOST)
-        } catch (e: Exception) {
-            AppLogger.error(e)
-            Result.Failure(errorCode = ErrorCode.UNKNOWN_ERROR)
-        }
-    }
-
-    override suspend fun requestAnswersByQuestionId(questionId: Int): Result<List<Answer>> {
-
-        return try {
-            val answers = remoteDataSource.requestAnswersByQuestionId(questionId)
-
-            val data = answers?.items?.map {
-                Answer(
-                    id = it.answer_id,
-                    author = it.owner.display_name,
-                    authorImage = it.owner.profile_image,
-                    body = it.body
-                )
-            } ?: emptyList()
-
             Result.Success(data)
         } catch (e: UnknownHostException) {
             AppLogger.error(e)

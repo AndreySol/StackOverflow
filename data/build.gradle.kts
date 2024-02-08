@@ -38,7 +38,8 @@ dependencies {
     implementation(project(":network"))
     implementation(project(":database"))
     implementation(project(":common"))
-    implementation(project(":questions"))
+    implementation(project(":feature:questions"))
+    implementation(project(":feature:answers"))
 
     hilt()
 

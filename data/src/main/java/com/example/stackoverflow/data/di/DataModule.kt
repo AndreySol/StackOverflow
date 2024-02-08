@@ -1,5 +1,7 @@
 package com.example.stackoverflow.data.di
 
+import com.example.stackoverflow.answers.domain.AnswersRepository
+import com.example.stackoverflow.data.AnswersRepositoryImpl
 import com.example.stackoverflow.database.LocalDataSource
 import com.example.stackoverflow.network.QuestionsRepositoryImpl
 import com.example.stackoverflow.network.RemoteDataSource
@@ -19,5 +21,13 @@ object DataModule {
         localDataSource: LocalDataSource
     ): QuestionsRepository {
         return QuestionsRepositoryImpl(remoteDataSource, localDataSource)
+    }
+
+    @Provides
+    fun provideAnswersRepository(
+        remoteDataSource: RemoteDataSource,
+        localDataSource: LocalDataSource
+    ): AnswersRepository {
+        return AnswersRepositoryImpl(remoteDataSource, localDataSource)
     }
 }
