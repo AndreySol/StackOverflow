@@ -1,7 +1,5 @@
 package com.example.stackoverflow.network.dto
 
-import com.example.stackoverflow.network.dto.OwnerDto
-
 data class QuestionDto(
     val accepted_answer_id: Int,
     val answer_count: Int,

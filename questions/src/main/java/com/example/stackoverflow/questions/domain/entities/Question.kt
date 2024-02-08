@@ -5,5 +5,6 @@ data class Question(
     val author: String,
     val authorImage: String,
     val title: String,
-    val body: String? = null
+    val body: String? = null,
+    val cached: Boolean = false
 )

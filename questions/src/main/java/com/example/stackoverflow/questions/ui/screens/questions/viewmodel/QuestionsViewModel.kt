@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.stackoverflow.common.ErrorCode
 import com.example.stackoverflow.common.Result
 import com.example.stackoverflow.questions.domain.entities.Question
+import com.example.stackoverflow.questions.domain.usecases.RequestCachedQuestionsUseCase
 import com.example.stackoverflow.questions.domain.usecases.RequestQuestionsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,12 +17,20 @@ import javax.inject.Inject
 @HiltViewModel
 class QuestionsViewModel @Inject constructor(
     val requestQuestions: RequestQuestionsUseCase,
+    val requestCachedQuestionsUseCase: RequestCachedQuestionsUseCase
 ) : ViewModel() {
     private val _flow = MutableStateFlow(QuestionsScreenState())
     val flow: StateFlow<QuestionsScreenState> = _flow
 
     init {
         viewModelScope.launch {
+
+            // todo: add cache support
+            /*when (val result = requestCachedQuestionsUseCase()) {
+                is Result.Success -> emitData(result.data)
+                is Result.Failure -> emitErrorMsg(result.errorCode)
+            }*/
+
             when (val result = requestQuestions()) {
                 is Result.Success -> emitData(result.data)
                 is Result.Failure -> emitErrorMsg(result.errorCode)

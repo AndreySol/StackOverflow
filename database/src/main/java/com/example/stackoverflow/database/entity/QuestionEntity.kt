@@ -1,24 +1,14 @@
 package com.example.stackoverflow.database.entity
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity
 data class QuestionEntity(
-    val acceptedAnswerId: Int,
-    val answerCount: Int,
-    val closedDate: Int,
-    val closedReason: String,
-    val contentLicense: String,
-    val creationDate: Int,
-    val isAnswered: Boolean,
-    val lastActivityDate: Int,
-    val lastEditDate: Int,
-    val link: String,
-    val owner: OwnerEntity,
-    val questionId: Int,
-    val score: Int,
-    val tags: List<String>,
+    @PrimaryKey
+    val id: Int,
+    val author: String,
+    val authorImage: String,
     val title: String,
-    val viewCount: Int,
-    val body: String?
+    val body: String? = null
 )

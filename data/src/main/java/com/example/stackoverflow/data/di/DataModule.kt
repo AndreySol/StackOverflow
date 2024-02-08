@@ -1,5 +1,6 @@
 package com.example.stackoverflow.data.di
 
+import com.example.stackoverflow.database.LocalDataSource
 import com.example.stackoverflow.network.QuestionsRepositoryImpl
 import com.example.stackoverflow.network.RemoteDataSource
 import com.example.stackoverflow.questions.domain.QuestionsRepository
@@ -13,7 +14,10 @@ import dagger.hilt.components.SingletonComponent
 object DataModule {
 
     @Provides
-    fun provideQuestionsRepository(remoteDataSource: RemoteDataSource): QuestionsRepository {
-        return QuestionsRepositoryImpl(remoteDataSource)
+    fun provideQuestionsRepository(
+        remoteDataSource: RemoteDataSource,
+        localDataSource: LocalDataSource
+    ): QuestionsRepository {
+        return QuestionsRepositoryImpl(remoteDataSource, localDataSource)
     }
 }

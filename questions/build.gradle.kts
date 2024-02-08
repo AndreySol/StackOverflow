@@ -44,7 +44,6 @@ dependencies {
 
     implementation(project(":common"))
 
-    retrofit()
     hilt()
     compose()
     coil()
