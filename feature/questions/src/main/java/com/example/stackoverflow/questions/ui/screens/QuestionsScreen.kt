@@ -24,7 +24,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.stackoverflow.common.ErrorCode
-import com.example.stackoverflow.questions.R
+import com.example.stackoverflow.common.R
 import com.example.stackoverflow.questions.domain.entities.Question
 import com.example.stackoverflow.questions.ui.composes.ShowAuthorImage
 import com.example.stackoverflow.questions.ui.screens.viewmodel.QuestionEvent

@@ -76,7 +76,7 @@ class LoginVewModel @Inject constructor(
             val email = flow.value.email
             val password = flow.value.password
 
-            when (val result = loginUseCase(email, password)) {
+            when (loginUseCase(email, password)) {
                 is Result.Success -> {
                     _flow.update {
                         _flow.value.copy(

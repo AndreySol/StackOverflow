@@ -2,4 +2,7 @@
     <string name="error_unknown_host">Host is not reachable</string>
     <string name="error_unknown_error">Unknown Error</string>
     <string name="error_parameter_error">Incorrect parameter</string>
+
+    <string name="empty_questions_list">Empty questions list</string>
+    <string name="empty_answers_list">Empty answers list</string>
 </resources>

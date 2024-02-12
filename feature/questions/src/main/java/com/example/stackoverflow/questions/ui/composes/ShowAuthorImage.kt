@@ -9,7 +9,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
-import com.example.stackoverflow.questions.R
+import com.example.stackoverflow.common.R
 
 @Composable
 fun ShowAuthorImage(

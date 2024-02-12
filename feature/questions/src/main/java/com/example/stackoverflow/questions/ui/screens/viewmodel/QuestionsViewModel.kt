@@ -69,7 +69,6 @@ class QuestionsViewModel @Inject constructor(
         }
     }
 
-
     fun onNavigated() {
         _flow.update { state ->
             state.copy(
