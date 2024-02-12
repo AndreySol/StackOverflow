@@ -7,8 +7,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.example.stackoverflow.questions.ui.screens.questions.QuestionsScreen
-import com.example.stackoverflow.questions.ui.screens.questions.viewmodel.QuestionsScreenState
 import com.example.stackoverflow.questions.ui.screens.questions.viewmodel.QuestionsViewModel
+import com.example.stackoverflow.questions.ui.screens.viewmodel.QuestionsScreenState
 
 const val questionsRoute = "questions_route"
 

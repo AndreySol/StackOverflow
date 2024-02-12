@@ -7,6 +7,8 @@ import com.example.stackoverflow.common.Result
 import com.example.stackoverflow.questions.domain.entities.Question
 import com.example.stackoverflow.questions.domain.usecases.RequestCachedQuestionsUseCase
 import com.example.stackoverflow.questions.domain.usecases.RequestQuestionsUseCase
+import com.example.stackoverflow.questions.ui.screens.viewmodel.QuestionEvent
+import com.example.stackoverflow.questions.ui.screens.viewmodel.QuestionsScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -57,17 +59,16 @@ class QuestionsViewModel @Inject constructor(
         )
     }
 
-    fun onEvent(event: QuestionEvent) {
-        when (event) {
-            is QuestionEvent.NavigateToAnswersById -> {
-                _flow.update { state ->
-                    state.copy(
-                        navigateTo = QuestionsScreenState.Navigation.ToAnswersById(event.id)
-                    )
-                }
+    fun onEvent(event: QuestionEvent) = when (event) {
+        is QuestionEvent.NavigateToAnswersById -> {
+            _flow.update { state ->
+                state.copy(
+                    navigateTo = QuestionsScreenState.Navigation.ToAnswersById(event.id)
+                )
             }
         }
     }
+
 
     fun onNavigated() {
         _flow.update { state ->

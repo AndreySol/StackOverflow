@@ -27,8 +27,8 @@ import com.example.stackoverflow.common.ErrorCode
 import com.example.stackoverflow.questions.R
 import com.example.stackoverflow.questions.domain.entities.Question
 import com.example.stackoverflow.questions.ui.composes.ShowAuthorImage
-import com.example.stackoverflow.questions.ui.screens.questions.viewmodel.QuestionEvent
-import com.example.stackoverflow.questions.ui.screens.questions.viewmodel.QuestionsScreenState
+import com.example.stackoverflow.questions.ui.screens.viewmodel.QuestionEvent
+import com.example.stackoverflow.questions.ui.screens.viewmodel.QuestionsScreenState
 
 @Composable
 fun QuestionsScreen(

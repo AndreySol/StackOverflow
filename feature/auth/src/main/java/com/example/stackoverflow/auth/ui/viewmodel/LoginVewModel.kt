@@ -24,13 +24,11 @@ class LoginVewModel @Inject constructor(
     private var emailError = true
     private var passwordError = true
 
-    fun onEvent(event: LoginEvent) {
-        when (event) {
-            LoginEvent.SignIn -> signIn()
-            is LoginEvent.EmailValueChanged -> changeEmail(event.name)
-            is LoginEvent.PasswordValueChanged -> changePassword(event.password)
-            LoginEvent.ErrorShown -> errorShown()
-        }
+    fun onEvent(event: LoginEvent) = when (event) {
+        LoginEvent.SignIn -> signIn()
+        is LoginEvent.EmailValueChanged -> changeEmail(event.name)
+        is LoginEvent.PasswordValueChanged -> changePassword(event.password)
+        LoginEvent.ErrorShown -> errorShown()
     }
 
     private fun changeEmail(email: String) {
