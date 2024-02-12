@@ -1,30 +1,19 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
 }
 
 android {
-    namespace = "com.example.stackoverflow"
+    namespace = "com.example.stackoverflow.auth"
     compileSdk = 34
 
-    lint {
-        checkAllWarnings = true
-        checkDependencies = true
-    }
-
     defaultConfig {
-        applicationId = "com.example.stackoverflow"
         minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -34,7 +23,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -44,32 +32,25 @@ android {
     kotlinOptions {
         jvmTarget = "18"
     }
+
     buildFeatures {
         compose = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
-
 
 dependencies {
 
-    implementation(project(":feature:auth"))
-    implementation(project(":feature:questions"))
-    implementation(project(":feature:answers"))
     implementation(project(":common"))
-    implementation(project(":network"))
-    implementation(project(":database"))
-    implementation(project(":data"))
 
-    compose()
     hilt()
+    compose()
 
     test()
+
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.6.1")
 }
