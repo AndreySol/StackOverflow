@@ -30,7 +30,7 @@ import com.example.stackoverflow.auth.ui.viewmodel.LoginState
 fun LoginScreen(
     state: LoginState,
     onEvent: (LoginEvent) -> Unit,
-    onSignedIn: () -> Unit
+    onSignedIn: () -> Unit,
 ) {
     val context = LocalContext.current
 
@@ -100,7 +100,7 @@ fun LoginScreenPreview() {
     LoginScreen(
         state,
         onEvent = {},
-        onSignedIn = {}
+        onSignedIn = {},
     )
 }
 
@@ -111,6 +111,6 @@ fun LoginScreenPreviewLoading() {
     LoginScreen(
         state,
         onEvent = {},
-        onSignedIn = {}
+        onSignedIn = {},
     )
 }

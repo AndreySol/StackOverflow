@@ -21,8 +21,8 @@ class LoginVewModel @Inject constructor(
     private val _flow = MutableStateFlow(LoginState())
     val flow: StateFlow<LoginState> = _flow
 
-    private var emailError = true
-    private var passwordError = true
+    private var emailErrorMsg = "empty"
+    private var passwordErrorMsg = "empty"
 
     fun onEvent(event: LoginEvent) = when (event) {
         LoginEvent.SignIn -> signIn()
@@ -32,36 +32,35 @@ class LoginVewModel @Inject constructor(
     }
 
     private fun changeEmail(email: String) {
-        var emailErrorMsg = ""
-
-        if (email.isEmpty()) {
-            emailError = true
-            emailErrorMsg = "Email should not be empty"
-        } else if (!emailValidator.isValid(email)) {
-            emailError = true
-            emailErrorMsg = "Invalid email"
-        } else {
-            emailError = false
-        }
+        emailErrorMsg = validateEmail(email)
 
         _flow.update {
             _flow.value.copy(
                 email = email,
-                emailError = emailError,
+                emailError = emailErrorMsg.isNotEmpty(),
                 emailErrorMsg = emailErrorMsg,
                 submitEnabled = isSubmitEnabled()
             )
         }
     }
 
+    private fun validateEmail(email: String): String {
+        return if (email.isEmpty()) {
+            "Email should not be empty"
+        } else if (!emailValidator.isValid(email)) {
+            "Invalid email"
+        } else {
+            ""
+        }
+    }
+
     private fun changePassword(password: String) {
-        passwordError = password.isEmpty()
-        val passwordErrorMsg = if (passwordError) "Password should not be empty" else ""
+        passwordErrorMsg = if (password.isEmpty()) "Password should not be empty" else ""
 
         _flow.update {
             _flow.value.copy(
                 password = password,
-                passwordError = passwordError,
+                passwordError = passwordErrorMsg.isNotEmpty(),
                 passwordErrorMsg = passwordErrorMsg,
                 submitEnabled = isSubmitEnabled()
             )
@@ -107,6 +106,6 @@ class LoginVewModel @Inject constructor(
     }
 
     private fun isSubmitEnabled(): Boolean {
-        return !emailError && !passwordError
+        return emailErrorMsg.isEmpty() && passwordErrorMsg.isEmpty()
     }
 }

@@ -18,11 +18,10 @@ fun Navigation(navController: NavHostController) {
             navController.navigateToQuestionsScreen()
         }
 
-        mainScreen(
-            onButtonClicked = {
-                navController.navigateToLoginScreen()
-            }
-        )
+        mainScreen {
+            navController.navigateToLoginScreen()
+        }
+
 
         questionsScreen {
             navController.navigateToAnswersScreen(it)
