@@ -35,9 +35,17 @@ android {
 }
 
 dependencies {
+    //room()
+    implementation(libs.room)
+    kapt(libs.roomCompiler)
 
-    room()
-    hilt()
+    //hilt()
+    implementation(libs.hiltAndroid)
+    kapt(libs.hiltCompiler)
+    implementation(libs.hiltNavigation)
 
-    test()
+    //test()
+    testImplementation(libs.testJUnit)
+    androidTestImplementation(libs.androidTestJUnit)
+    androidTestImplementation(libs.androidTestEspresso)
 }

@@ -33,9 +33,8 @@ android {
 }
 
 dependencies {
-
-    test()
-
-    // Composable
-    //implementation("androidx.activity:activity-compose:1.8.0")
+    //test()
+    testImplementation(libs.testJUnit)
+    androidTestImplementation(libs.androidTestJUnit)
+    androidTestImplementation(libs.androidTestEspresso)
 }

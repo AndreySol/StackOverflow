@@ -2,7 +2,6 @@ object Versions {
     // Compose
     const val compose = "1.5.4"
     const val composeMaterial3 = "1.1.2"
-    const val composeCompiler = "1.4.6"
     const val composNavigation = "2.7.4"
 
     // Hilt

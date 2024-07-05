@@ -1,0 +1,54 @@
+[versions]
+compose = "1.5.4"
+composeMaterial3 = "1.2.1"
+composNavigation = "2.7.4"
+composBom = "2023.10.01"
+
+material = "1.10.0"
+
+composeUiTest = "1.6.1"
+
+okHttp = "4.11.0"
+retrofit = "2.9.0"
+
+hilt = "2.48.1"
+hiltNavigation = "1.0.0"
+
+coil = "2.4.0"
+
+room = "2.6.1"
+
+jUnit = "4.13.2"
+androidJUnit = "1.1.5"
+androidEspresso = "3.5.1"
+
+[libraries]
+composeMaterial3 = { group = "androidx.compose.material3", name = "material3", version.ref = "composeMaterial3" }
+composeBom = { group = "androidx.compose", name = "compose-bom", version.ref = "composBom" }
+composeNavigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composNavigation" }
+composeUiToolingPreview = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version.ref = "compose" }
+composeLifeCycleRuntime = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "compose" }
+
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+composeUiTooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "composeUiTest" }
+composeUiTest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "composeUiTest" }
+
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+okHttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp" }
+
+hiltAndroid = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hiltCompiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+hiltNavigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigation" }
+
+coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+
+room = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+roomCompiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+
+testJUnit = { group = "junit", name = "junit", version.ref = "jUnit" }
+androidTestJUnit = { group = "androidx.test.ext", name = "junit", version.ref = "androidJUnit" }
+androidTestEspresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidEspresso" }
+
+[plugins]

@@ -34,13 +34,22 @@ android {
 }
 
 dependencies {
-
     implementation(project(":common"))
     implementation(project(":feature:questions"))
     implementation(project(":feature:questions"))
 
-    retrofit()
-    hilt()
+    //retrofit()
+    implementation(libs.retrofit)
+    implementation(libs.gson)
+    implementation(libs.okHttp)
 
-    test()
+    //hilt()
+    implementation(libs.hiltAndroid)
+    kapt(libs.hiltCompiler)
+    implementation(libs.hiltNavigation)
+
+    //test()
+    testImplementation(libs.testJUnit)
+    androidTestImplementation(libs.androidTestJUnit)
+    androidTestImplementation(libs.androidTestEspresso)
 }

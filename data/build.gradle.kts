@@ -34,14 +34,19 @@ android {
 }
 
 dependencies {
-
     implementation(project(":network"))
     implementation(project(":database"))
     implementation(project(":common"))
     implementation(project(":feature:questions"))
     implementation(project(":feature:answers"))
 
-    hilt()
+    //hilt()
+    implementation(libs.hiltAndroid)
+    kapt(libs.hiltCompiler)
+    implementation(libs.hiltNavigation)
 
-    test()
+    //test()
+    testImplementation(libs.testJUnit)
+    androidTestImplementation(libs.androidTestJUnit)
+    androidTestImplementation(libs.androidTestEspresso)
 }

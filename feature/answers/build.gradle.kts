@@ -43,18 +43,32 @@ android {
 }
 
 dependencies {
-
     implementation(project(":common"))
     implementation(project(":feature:questions"))
 
-    hilt()
-    compose()
-    coil()
+    //hilt()
+    implementation(libs.hiltAndroid)
+    kapt(libs.hiltCompiler)
+    implementation(libs.hiltNavigation)
+
+    //compose()
+    implementation(libs.composeMaterial3)
+    implementation(libs.composeNavigation)
+    implementation(libs.composeUiToolingPreview)
+    implementation(libs.composeLifeCycleRuntime)
+    implementation(platform(libs.composeBom))
+
+    //coil()
+    implementation(libs.coil)
+
     // Material
-    implementation("com.google.android.material:material:1.11.0")
+    implementation(libs.material)
 
-    test()
+    //test()
+    testImplementation(libs.testJUnit)
+    androidTestImplementation(libs.androidTestJUnit)
+    androidTestImplementation(libs.androidTestEspresso)
 
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:1.6.1")
+    debugImplementation(libs.composeUiTooling)
+    debugImplementation(libs.composeUiTest)
 }

@@ -56,10 +56,7 @@ android {
         }
     }
 }
-
-
 dependencies {
-
     implementation(project(":feature:auth"))
     implementation(project(":feature:questions"))
     implementation(project(":feature:answers"))
@@ -68,8 +65,20 @@ dependencies {
     implementation(project(":database"))
     implementation(project(":data"))
 
-    compose()
-    hilt()
+    //compose()
+    implementation(libs.composeMaterial3)
+    implementation(libs.composeNavigation)
+    implementation(libs.composeUiToolingPreview)
+    implementation(libs.composeLifeCycleRuntime)
+    implementation(platform(libs.composeBom))
 
-    test()
+    //hilt()
+    implementation(libs.hiltAndroid)
+    kapt(libs.hiltCompiler)
+    implementation(libs.hiltNavigation)
+
+    //test()
+    testImplementation(libs.testJUnit)
+    androidTestImplementation(libs.androidTestJUnit)
+    androidTestImplementation(libs.androidTestEspresso)
 }
