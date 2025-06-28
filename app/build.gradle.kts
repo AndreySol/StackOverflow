@@ -1,13 +1,14 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.compose)
+    alias(libs.plugins.hilt)
     kotlin("kapt")
-    id("com.google.dagger.hilt.android")
 }
 
 android {
     namespace = "com.example.stackoverflow"
-    compileSdk = 34
+    compileSdk = 36
 
     lint {
         checkAllWarnings = true
