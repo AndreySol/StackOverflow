@@ -1,4 +1,4 @@
-package com.example.stackoverflow.questions.navigation
+package com.example.stackoverflow.answers.navigation
 
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -9,8 +9,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.stackoverflow.questions.ui.screens.answers.AnswersScreen
-import com.example.stackoverflow.questions.ui.screens.answers.viewmodel.AnswersViewModel
+import com.example.stackoverflow.answers.ui.screens.AnswersScreen
+import com.example.stackoverflow.answers.ui.screens.viewmodel.AnswersViewModel
 
 internal const val questionIdArg = "question_id"
 

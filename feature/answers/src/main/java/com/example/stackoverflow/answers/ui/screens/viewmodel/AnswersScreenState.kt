@@ -1,4 +1,4 @@
-package com.example.stackoverflow.questions.ui.screens.answers.viewmodel
+package com.example.stackoverflow.answers.ui.screens.viewmodel
 
 import com.example.stackoverflow.answers.domain.entities.QuestionWithAnswers
 import com.example.stackoverflow.common.ErrorCode

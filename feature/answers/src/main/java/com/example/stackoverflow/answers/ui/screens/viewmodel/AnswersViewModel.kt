@@ -1,4 +1,4 @@
-package com.example.stackoverflow.questions.ui.screens.answers.viewmodel
+package com.example.stackoverflow.answers.ui.screens.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -7,7 +7,7 @@ import com.example.stackoverflow.answers.domain.entities.QuestionWithAnswers
 import com.example.stackoverflow.answers.domain.usecases.RequestQuestionWithAnswersByIdUseCase
 import com.example.stackoverflow.common.ErrorCode
 import com.example.stackoverflow.common.Result
-import com.example.stackoverflow.questions.navigation.QuestionIdArgs
+import com.example.stackoverflow.answers.navigation.QuestionIdArgs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

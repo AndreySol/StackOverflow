@@ -1,4 +1,4 @@
-package com.example.stackoverflow.questions.ui.screens.answers
+package com.example.stackoverflow.answers.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -9,28 +9,26 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.stackoverflow.answers.domain.entities.QuestionWithAnswers
+import com.example.stackoverflow.answers.ui.screens.viewmodel.AnswersScreenState
 import com.example.stackoverflow.common.ErrorCode
 import com.example.stackoverflow.common.R
 import com.example.stackoverflow.questions.domain.entities.Answer
 import com.example.stackoverflow.questions.domain.entities.Question
 import com.example.stackoverflow.questions.ui.composes.ShowAuthorImage
 import com.example.stackoverflow.questions.ui.composes.ShowHtmlAnswerBody
-import com.example.stackoverflow.questions.ui.screens.answers.viewmodel.AnswersScreenState
 
 @Composable
 fun AnswersScreen(state: AnswersScreenState) {
@@ -62,7 +60,7 @@ private fun ShowErrorState(errorCode: ErrorCode) {
     ) {
         Text(
             text = "Error: ${errorCode.toMessage(LocalContext.current)}",
-            style = TextStyle(color = Color.Red)
+            color = MaterialTheme.colorScheme.error
         )
     }
 }
@@ -75,7 +73,7 @@ private fun ShowContent(questionWithAnswers: QuestionWithAnswers) {
     ) {
         item {
             Text("Author: " + questionWithAnswers.question.author)
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(16.dp))
             ShowAuthorImage(
                 modifier = Modifier.size(100.dp),
                 imageUrl = questionWithAnswers.question.authorImage
@@ -84,10 +82,8 @@ private fun ShowContent(questionWithAnswers: QuestionWithAnswers) {
             if (questionWithAnswers.question.body != null) {
                 ShowHtmlAnswerBody(body = questionWithAnswers.question.body!!)
             }
-            Divider(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .width(1.dp)
+            HorizontalDivider(
+                modifier = Modifier.fillMaxWidth()
             )
         }
         if (questionWithAnswers.answers.isEmpty()) {
@@ -100,20 +96,18 @@ private fun ShowContent(questionWithAnswers: QuestionWithAnswers) {
                 }
             }
         } else {
-            items(questionWithAnswers.answers) { question ->
+            items(questionWithAnswers.answers, key = { it.id }) { answer ->
                 Column(
                     modifier = Modifier.clickable {
-                        //onItemClicked(question.id)
+                        //onItemClicked(answer.id)
                     }
                 ) {
-                    Text("Author: ${question.author}")
+                    Text("Author: ${answer.author}")
                     ShowAuthorImage(
-                        modifier = Modifier
-                            .height(100.dp)
-                            .width(100.dp),
-                        imageUrl = question.authorImage
+                        modifier = Modifier.size(100.dp),
+                        imageUrl = answer.authorImage
                     )
-                    ShowHtmlAnswerBody(question.body)
+                    ShowHtmlAnswerBody(answer.body)
                     Spacer(modifier = Modifier.height(16.dp))
                 }
             }
@@ -133,7 +127,7 @@ fun PreviewAnswersScreenEmptyList() {
                     id = 0,
                     body = "Body",
                     authorImage = "Image",
-                    author = "Aurthor",
+                    author = "Author",
                     title = "Title"
                 ),
                 answers = emptyList()
@@ -166,7 +160,7 @@ fun PreviewAnswersScreenOneAnswer() {
                     id = 0,
                     body = "Body",
                     authorImage = "Image",
-                    author = "Aurthor",
+                    author = "Author",
                     title = "Title"
                 ),
                 answers = listOf(
