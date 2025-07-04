@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.example.stackoverflow"
-    compileSdk = 36
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     lint {
         checkAllWarnings = true
@@ -17,8 +17,8 @@ android {
 
     defaultConfig {
         applicationId = "com.example.stackoverflow"
-        minSdk = 24
-        targetSdk = 33
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
