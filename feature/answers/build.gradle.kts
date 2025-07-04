@@ -62,9 +62,6 @@ dependencies {
     //coil()
     implementation(libs.coil)
 
-    // Material
-    implementation(libs.material)
-
     //test()
     testImplementation(libs.testJUnit)
     androidTestImplementation(libs.androidTestJUnit)

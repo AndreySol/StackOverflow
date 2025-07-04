@@ -36,7 +36,6 @@ android {
 dependencies {
     implementation(project(":common"))
     implementation(project(":feature:questions"))
-    implementation(project(":feature:questions"))
 
     //retrofit()
     implementation(libs.retrofit)
@@ -46,7 +45,6 @@ dependencies {
     //hilt()
     implementation(libs.hiltAndroid)
     kapt(libs.hiltCompiler)
-    implementation(libs.hiltNavigation)
 
     //test()
     testImplementation(libs.testJUnit)

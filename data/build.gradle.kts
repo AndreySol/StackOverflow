@@ -43,7 +43,6 @@ dependencies {
     //hilt()
     implementation(libs.hiltAndroid)
     kapt(libs.hiltCompiler)
-    implementation(libs.hiltNavigation)
 
     //test()
     testImplementation(libs.testJUnit)
