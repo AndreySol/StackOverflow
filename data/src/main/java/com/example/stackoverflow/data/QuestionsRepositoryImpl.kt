@@ -1,4 +1,4 @@
-package com.example.stackoverflow.network
+package com.example.stackoverflow.data
 
 import com.example.stackoverflow.common.AppLogger
 import com.example.stackoverflow.common.ErrorCode
