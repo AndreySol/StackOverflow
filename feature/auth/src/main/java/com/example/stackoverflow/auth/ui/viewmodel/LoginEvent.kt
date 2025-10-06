@@ -5,4 +5,7 @@ sealed interface LoginEvent {
     data class EmailValueChanged(val name: String) : LoginEvent
     data class PasswordValueChanged(val password: String) : LoginEvent
     object ErrorShown : LoginEvent
+    object BiometricAuthRequested : LoginEvent
+    object BiometricAuthCompleted : LoginEvent
+    object CheckBiometricAvailability : LoginEvent
 }

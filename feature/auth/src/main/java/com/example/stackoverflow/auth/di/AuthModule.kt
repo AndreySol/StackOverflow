@@ -3,6 +3,8 @@ package com.example.stackoverflow.auth.di
 import com.example.stackoverflow.auth.core.EmailValidationService
 import com.example.stackoverflow.auth.core.EmailValidationServiceImpl
 import com.example.stackoverflow.auth.data.AuthRepositoryImpl
+import com.example.stackoverflow.auth.data.BiometricManagerImpl
+import com.example.stackoverflow.auth.data.BiometricPreferencesManager
 import com.example.stackoverflow.auth.data.RemoteDataSource
 import com.example.stackoverflow.auth.domain.AuthRepository
 import dagger.Module
@@ -22,8 +24,10 @@ object AuthModule {
 
     @Provides
     fun provideAuthRepository(
-        remoteDataSource: RemoteDataSource
+        remoteDataSource: RemoteDataSource,
+        biometricManager: BiometricManagerImpl,
+        biometricPreferencesManager: BiometricPreferencesManager
     ): AuthRepository {
-        return AuthRepositoryImpl(remoteDataSource)
+        return AuthRepositoryImpl(remoteDataSource, biometricManager, biometricPreferencesManager)
     }
 }

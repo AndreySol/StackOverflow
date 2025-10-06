@@ -15,7 +15,6 @@ fun NavGraphBuilder.loginScreen(onSignedIn: () -> Unit) {
 
     composable(route = loginRoute) {
         val viewModel: LoginVewModel = hiltViewModel()
-
         val state by viewModel.flow.collectAsStateWithLifecycle()
         LoginScreen(
             state,
@@ -24,6 +23,9 @@ fun NavGraphBuilder.loginScreen(onSignedIn: () -> Unit) {
             },
             onSignedIn = {
                 onSignedIn()
+            },
+            onBiometricAuthenticate = { activity ->
+                viewModel.authenticateWithBiometric(activity)
             }
         )
     }

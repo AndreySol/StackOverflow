@@ -49,7 +49,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
     packaging {
         resources {
@@ -75,6 +75,7 @@ dependencies {
 
     //hilt()
     implementation(libs.hiltAndroid)
+    implementation(libs.appcompat)
     kapt(libs.hiltCompiler)
     implementation(libs.hiltNavigation)
 

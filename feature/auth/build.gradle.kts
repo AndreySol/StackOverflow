@@ -39,17 +39,23 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
 }
 
 dependencies {
     implementation(project(":common"))
 
+    implementation(libs.materialIconsExtended)
+
+
     //hilt()
     implementation(libs.hiltAndroid)
     kapt(libs.hiltCompiler)
     implementation(libs.hiltNavigation)
+
+    //biometric
+    implementation(libs.biometric)
 
     //compose()
     implementation(libs.composeMaterial3)

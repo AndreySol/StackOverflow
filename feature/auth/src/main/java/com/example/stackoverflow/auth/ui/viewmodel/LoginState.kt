@@ -1,5 +1,7 @@
 package com.example.stackoverflow.auth.ui.viewmodel
 
+import com.example.stackoverflow.auth.domain.BiometricAuthState
+
 data class LoginState(
     val errorMsg: String = "",
 
@@ -15,5 +17,7 @@ data class LoginState(
 
     val loading: Boolean = false,
 
-    val signedIn: Boolean = false
+    val signedIn: Boolean = false,
+
+    val biometricAuthState: BiometricAuthState = BiometricAuthState()
 )
